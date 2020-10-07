@@ -8,12 +8,18 @@ namespace AmberTurnerSite.Controllers
 {
     public class ReferencesController : Controller
     {
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult OnlineMedia()
+        {
+            return View();
+        }
+
+        public IActionResult PrintMedia()
         {
             return View();
         }
