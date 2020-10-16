@@ -18,14 +18,27 @@ namespace AmberTurnerSite.Controllers
             _logger = logger;
         }
 
+        
         public IActionResult Index()
         {
             return View();
         }
 
+        [HttpGet]
         public IActionResult Forum()
         {
-            return View();
+            Forum model = new Forum();
+            User uName = new User();
+            model.PostCreator = uName;
+            //get pagename, rating, , name, date ?
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Forum(Forum model)
+        {
+            return View(model);
         }
 
         public IActionResult Overview()
