@@ -18,6 +18,7 @@ namespace AmberTurnerSite.Controllers
             _logger = logger;
         }
 
+        
         public IActionResult Index()
         {
             return View();
@@ -25,7 +26,19 @@ namespace AmberTurnerSite.Controllers
 
         public IActionResult Forum()
         {
-            return View();
+            Forum model = new Forum();
+            User uName = new User();
+            model.PostCreator = uName;
+            model.PostDate = DateTime.Now;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Forum(Forum model)
+        {
+            model.PostDate = DateTime.Now;
+            return View(model);
         }
 
         public IActionResult Overview()

@@ -1,13 +1,70 @@
-﻿@{
+﻿@model Forum
+@{
     ViewData["Title"] = "Forum";
 }
 
+<<style>
+    label {
+        display: inline-block;
+        width: 10em;
+        padding-right: 1em;
+    }
+
+    div {
+        margin-bottom: .5em;
+    }
+</style>
+
 <div class="text-center">
     <h1 class="dislpay-4"> Forum for Discussion</h1>
-
     <p>
-        A forum for people to talk about their favorite scary stories, their opinions on what does or doesn't work,
-        and sharing their own writing attempts. 
+        A forum for people to talk about their favorite stories, themes, authors, and opinions.
     </p>
 </div>
 
+<form method="post" class="container form-horizontal">
+    <div>
+        <label asp-for="PageName" >Page Name:</label> 
+        <input asp-for="PageName" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="PageRating" >Rating:</label>
+        <input asp-for="PageRating" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="PostText" >Post:</label>
+        <input asp-for="PostText" class="form-control" style="height:300px" />
+    </div>
+    <div>
+        <label asp-for="PostCreator.Name" >Written By:</label>
+        <input asp-for="PostCreator.Name" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="PostDate" >Date:</label>
+        <input asp-for="PostDate" class="form-control" />
+    </div>
+    <div>
+        <button type="submit">Post Message</button>
+    </div>
+</form>
+
+<br />
+<br />
+<h2>Post Thread</h2>
+<p>
+    Page Name:
+    @Model.PageName <br /><br />
+
+    Rating:
+    @Model.PageRating <br /><br />
+
+    Post:
+    @Model.PostText <br /><br />
+
+    Written By:
+    @Model.PostCreator.Name <br /><br />
+
+    Date:
+    @Model.PostDate <br /><br />
+</p>
+    -
