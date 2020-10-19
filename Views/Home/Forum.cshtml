@@ -22,26 +22,26 @@
     </p>
 </div>
 
-<form method="post">
+<form method="post" class="container form-horizontal">
     <div>
-        <label asp-for="PageName">Page Name:</label>
-        <input asp-for="PageName" />
+        <label asp-for="PageName" >Page Name:</label> 
+        <input asp-for="PageName" class="form-control"/>
     </div>
     <div>
-        <label asp-for="PageRating">Rating:</label>
-        <input asp-for="PageRating" />
+        <label asp-for="PageRating" >Rating:</label>
+        <input asp-for="PageRating" class="form-control" />
     </div>
     <div>
-        <label asp-for="PostText">Post:</label>
-        <input asp-for="PostText" style="height:300px" />
+        <label asp-for="PostText" >Post:</label>
+        <input asp-for="PostText" class="form-control" style="height:300px" />
     </div>
     <div>
-        <label asp-for="PostCreator.Name">Written By:</label>
-        <input asp-for="PostCreator.Name" />
+        <label asp-for="PostCreator.Name" >Written By:</label>
+        <input asp-for="PostCreator.Name" class="form-control" />
     </div>
     <div>
-        <label asp-for="PostDate">Date:</label>
-        <input asp-for="PostDate" />
+        <label asp-for="PostDate" >Date:</label>
+        <input asp-for="PostDate" class="form-control" />
     </div>
     <div>
         <button type="submit">Post Message</button>
@@ -53,18 +53,18 @@
 <h2>Post Thread</h2>
 <p>
     Page Name:
-    @Model.PageName <br />
+    @Model.PageName <br /><br />
 
     Rating:
-    @Model.PageRating <br />
+    @Model.PageRating <br /><br />
 
     Post:
-    @Model.PostText <br />
+    @Model.PostText <br /><br />
 
     Written By:
-    @Model.PostCreator.Name <br />
+    @Model.PostCreator.Name <br /><br />
 
     Date:
-    @Model.PostDate <br />
+    @Model.PostDate <br /><br />
 </p>
     -
