@@ -3,68 +3,57 @@
     ViewData["Title"] = "Forum";
 }
 
-<<style>
-    label {
-        display: inline-block;
-        width: 10em;
-        padding-right: 1em;
-    }
-
-    div {
-        margin-bottom: .5em;
-    }
-</style>
-
-<div class="text-center">
-    <h1 class="dislpay-4"> Forum for Discussion</h1>
-    <p>
-        A forum for people to talk about their favorite stories, themes, authors, and opinions.
-    </p>
+<div class="text-center jumbotron">
+    <div class="container">
+        <h1> Forum for Discussion</h1>
+        <p>
+            A forum for people to talk about their favorite stories, themes, authors, and opinions.
+        </p>
+    </div>
 </div>
 
-<form method="post" class="container form-horizontal">
-    <div>
-        <label asp-for="PageName" >Page Name:</label> 
-        <input asp-for="PageName" class="form-control"/>
-    </div>
-    <div>
-        <label asp-for="PageRating" >Rating:</label>
-        <input asp-for="PageRating" class="form-control" />
-    </div>
-    <div>
-        <label asp-for="PostText" >Post:</label>
-        <input asp-for="PostText" class="form-control" style="height:300px" />
-    </div>
-    <div>
-        <label asp-for="PostCreator.Name" >Written By:</label>
-        <input asp-for="PostCreator.Name" class="form-control" />
-    </div>
-    <div>
-        <label asp-for="PostDate" >Date:</label>
-        <input asp-for="PostDate" class="form-control" />
-    </div>
-    <div>
-        <button type="submit">Post Message</button>
-    </div>
-</form>
+<div class="form-group">
+    <form method="post" class="container">
+        <div class="row">            
+            <label asp-for="PageName" class="control-label col-sm-2">Page Name:</label>
+            <input asp-for="PageName" class="form-control col-sm-8 mb-2" />          
+        </div>
+        <div class="row">
+            <label asp-for="PageRating" class="control-label col-sm-2">Rating:</label>
+            <input asp-for="PageRating" class="form-control col-sm-5 mb-2" />
+        </div>
+        <div class="row">
+            <label asp-for="PostText" class="control-label col-sm-2">Post:</label>
+            <input asp-for="PostText" class="form-control col-sm-10 mb-2" style="height:300px" />
+        </div>
+        <div class="row">
+            <label asp-for="PostCreator.Name" class="control-label col-sm-2">Written By:</label>
+            <input asp-for="PostCreator.Name" class="form-control col-sm-8 mb-2" />
+        </div>
+
+        <div class="container pt-4">
+            <button type="submit" class="btn btn-dark">Post Message</button>
+        </div>
+    </form>
+</div>
 
 <br />
 <br />
 <h2>Post Thread</h2>
-<p>
-    Page Name:
+<p> 
+    <strong class="m-3">Page Name:</strong>
     @Model.PageName <br /><br />
 
-    Rating:
+    <strong class="m-3">Rating:</strong>
     @Model.PageRating <br /><br />
 
-    Post:
+    <strong class="m-3">Post:</strong>
     @Model.PostText <br /><br />
 
-    Written By:
+    <strong class="m-3">Written By:</strong>
     @Model.PostCreator.Name <br /><br />
 
-    Date:
+    <strong class="m-3">Date:</strong>
     @Model.PostDate <br /><br />
 </p>
     -

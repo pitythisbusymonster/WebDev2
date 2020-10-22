@@ -29,9 +29,10 @@ namespace AmberTurnerSite.Controllers
             Forum model = new Forum();
             User uName = new User();
             model.PostCreator = uName;
-            model.PostDate = DateTime.Now;
-
+            //model.PostDate = DateTime.Now;
             return View(model);
+
+            //return View();
         }
 
         [HttpPost]
