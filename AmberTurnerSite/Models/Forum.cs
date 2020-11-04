@@ -8,6 +8,7 @@ namespace AmberTurnerSite.Models
 {
     public class Forum
     {
+        public int ForumID {get; set;} //
         public string PageName { get; set; }
         public string PageRating { get; set; }
         public string PostText { get; set; }
