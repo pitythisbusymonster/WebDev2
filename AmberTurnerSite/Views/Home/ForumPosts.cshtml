@@ -1,0 +1,27 @@
+﻿@model List<Forum>
+
+@{
+    ViewData["Title"] = "Forum Posts";
+}
+
+@foreach (Forum post in @Model)
+{
+    <p>
+        <strong class="m-3">Page Name:</strong>
+        @post.PageName <br /><br />
+
+        <strong class="m-3">Rating:</strong>
+        @post.PageRating <br /><br />
+
+        <strong class="m-3">Post:</strong>
+        @post.PostText <br /><br />
+
+        <strong class="m-3">Written By:</strong>
+        @post.PostCreator.Name <br /><br />
+
+        <strong class="m-3">Date:</strong>
+        @post.PostDate <br /><br />
+    </p>
+}
+
+
