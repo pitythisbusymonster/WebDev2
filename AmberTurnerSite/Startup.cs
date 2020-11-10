@@ -27,7 +27,7 @@ namespace AmberTurnerSite
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<ForumContext>(options => options.UseSqlServer(Configuration["Data:AmberTurnerSite:ConnectionString"]));//
+            services.AddDbContext<ForumContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));//
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

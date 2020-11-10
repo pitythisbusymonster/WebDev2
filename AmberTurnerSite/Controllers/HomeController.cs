@@ -52,14 +52,12 @@ namespace AmberTurnerSite.Controllers
             return View(model);
         }
 
-        /*public IActionResult Forums()//
+        public IActionResult Forums()//
         {
-            //was "working" before inclusion of "include(...)" but wasn't writing to screen
-            //need to figure out proper Include() pm, lamda expression
-            //var forumPosts = context.Forum.Include(post => ).ToList<Forum>();  //if errors, dblck if <forum> is right
+            var forumPosts = context.Forum.Include(user => user.PostCreator).ToList<Forum>();  
 
             return View(forumPosts);
-        }*/
+        }
 
         public IActionResult Overview()
         {
