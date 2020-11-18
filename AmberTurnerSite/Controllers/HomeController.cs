@@ -46,7 +46,7 @@ namespace AmberTurnerSite.Controllers
         {
             model.PostDate = DateTime.Now;
             //store the model in the db
-            context.Forum.Add(model);//
+            context.Forum.Add(model);   //ref to line 13 in ForumContext (if change there, change here and line 57
             context.SaveChanges();
 
             return View(model);
@@ -54,7 +54,7 @@ namespace AmberTurnerSite.Controllers
 
         public IActionResult Forums()//
         {
-            var forumPosts = context.Forum.Include(user => user.PostCreator).ToList<Forum>();  
+            var forumPosts = context.Forum.Include(post => post.PostCreator).ToList<Forum>();  
 
             return View(forumPosts);
         }

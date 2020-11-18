@@ -10,8 +10,8 @@ namespace AmberTurnerSite.Models
     {
         public ForumContext (
             DbContextOptions<ForumContext> options) : base(options) { }
-        public DbSet<Forum> Forum { get; set; } //these represent tables, in the db
-        public DbSet<User> User { get; set; }
+        public DbSet<Forum> Forum { get; set; } //these represent tables, in the db //change to <Forum>Posts instead of Forum?
+        public DbSet<User> User { get; set; }   //cjange to <User> Users?
 
 
 
