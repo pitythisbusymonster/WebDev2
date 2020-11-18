@@ -8,6 +8,8 @@ namespace AmberTurnerSite.Models
 {
     public class Forum
     {
+        //these become foreign keys, for db
+        public int ForumID {get; set;} //
         public string PageName { get; set; }
         public string PageRating { get; set; }
         public string PostText { get; set; }

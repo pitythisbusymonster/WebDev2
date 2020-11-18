@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AmberTurnerSite.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using AmberTurnerSite.Repos;
 
 namespace AmberTurnerSite
 {
@@ -24,6 +27,10 @@ namespace AmberTurnerSite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<ForumContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));//
+
+            //services.AddTransient<IPosts, ForumRepository>();    //injects repo into controller
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
