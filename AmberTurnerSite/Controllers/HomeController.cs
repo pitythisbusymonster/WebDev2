@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+//using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+//using Microsoft.Extensions.Logging;
 using AmberTurnerSite.Models;
+using AmberTurnerSite.Repos;
 using Microsoft.EntityFrameworkCore;
 
 namespace AmberTurnerSite.Controllers
@@ -19,10 +20,13 @@ namespace AmberTurnerSite.Controllers
             _logger = logger;
         }*/
 
-        ForumContext context;//
-        public HomeController(ForumContext c)//
+
+
+        IPosts repo;
+
+        public HomeController(IPosts r)//
         {
-            context = c;
+            repo = r;
         }
         
         public IActionResult Index()
@@ -35,7 +39,8 @@ namespace AmberTurnerSite.Controllers
             Forum model = new Forum();
             User uName = new User();
             model.PostCreator = uName;
-            //model.PostDate = DateTime.Now;
+            model.PostDate = DateTime.Now;
+
             return View(model);
 
             //return View();
@@ -45,18 +50,20 @@ namespace AmberTurnerSite.Controllers
         public IActionResult Forum(Forum model)
         {
             model.PostDate = DateTime.Now;
+
             //store the model in the db
-            context.Forum.Add(model);   //ref to line 13 in ForumContext (if change there, change here and line 57
-            context.SaveChanges();
+            repo.AddPost(model);
 
             return View(model);
         }
 
-        public IActionResult Forums()//
+        public IActionResult ForumPosts()//
         {
-            var forumPosts = context.Forum.Include(post => post.PostCreator).ToList<Forum>();  
+            //get all posts in the db
+            List<Forum> posts = repo.Posts.ToList<Forum>();
+            //var forumPosts = context.Forum.Include(post => post.PostCreator).ToList<Forum>();  
 
-            return View(forumPosts);
+            return View(posts);
         }
 
         public IActionResult Overview()
@@ -70,10 +77,10 @@ namespace AmberTurnerSite.Controllers
         }
 
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        /*[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        }*/
     }
 }

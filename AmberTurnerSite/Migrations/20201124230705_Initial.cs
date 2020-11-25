@@ -8,54 +8,54 @@ namespace AmberTurnerSite.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
-                    UserID = table.Column<int>(nullable: false)
+                    UserID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.UserID);
+                    table.PrimaryKey("PK_Users", x => x.UserID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Forum",
+                name: "Posts",
                 columns: table => new
                 {
-                    ForumID = table.Column<int>(nullable: false)
+                    ForumID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PageName = table.Column<string>(nullable: true),
-                    PageRating = table.Column<string>(nullable: true),
-                    PostText = table.Column<string>(nullable: true),
-                    PostCreatorUserID = table.Column<int>(nullable: true),
-                    PostDate = table.Column<DateTime>(nullable: false)
+                    PageName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PageRating = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostText = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostCreatorUserID = table.Column<int>(type: "int", nullable: true),
+                    PostDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Forum", x => x.ForumID);
+                    table.PrimaryKey("PK_Posts", x => x.ForumID);
                     table.ForeignKey(
-                        name: "FK_Forum_User_PostCreatorUserID",
+                        name: "FK_Posts_Users_PostCreatorUserID",
                         column: x => x.PostCreatorUserID,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Forum_PostCreatorUserID",
-                table: "Forum",
+                name: "IX_Posts_PostCreatorUserID",
+                table: "Posts",
                 column: "PostCreatorUserID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Forum");
+                name: "Posts");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
         }
     }
 }
