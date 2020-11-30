@@ -6,11 +6,11 @@ using AmberTurnerSite.Models;
 
 namespace AmberTurnerSite.Repos
 {
-    public interface IPosts  //should be IPosts by convention
+    public interface IPosts  
     {    
         IQueryable<Forum> Posts { get; }    //read/retrieve reviews
 
-        void AddPost(Forum forum);  //create a review
+        void AddPost(Forum posts);  //create a post
 
         Forum GetPostByPageName(string title);    //retrieve a particualr review
 

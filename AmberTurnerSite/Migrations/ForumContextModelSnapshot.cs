@@ -15,16 +15,16 @@ namespace AmberTurnerSite.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.9")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("AmberTurnerSite.Models.Forum", b =>
                 {
                     b.Property<int>("ForumID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("PageName")
                         .HasColumnType("nvarchar(max)");
@@ -45,7 +45,7 @@ namespace AmberTurnerSite.Migrations
 
                     b.HasIndex("PostCreatorUserID");
 
-                    b.ToTable("Forum");
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("AmberTurnerSite.Models.User", b =>
@@ -53,14 +53,14 @@ namespace AmberTurnerSite.Migrations
                     b.Property<int>("UserID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserID");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("AmberTurnerSite.Models.Forum", b =>
@@ -68,6 +68,8 @@ namespace AmberTurnerSite.Migrations
                     b.HasOne("AmberTurnerSite.Models.User", "PostCreator")
                         .WithMany()
                         .HasForeignKey("PostCreatorUserID");
+
+                    b.Navigation("PostCreator");
                 });
 #pragma warning restore 612, 618
         }
