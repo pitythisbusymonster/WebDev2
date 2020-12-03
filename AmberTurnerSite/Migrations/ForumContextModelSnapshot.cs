@@ -17,7 +17,7 @@ namespace AmberTurnerSite.Migrations
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.0");  //
 
             modelBuilder.Entity("AmberTurnerSite.Models.Forum", b =>
                 {

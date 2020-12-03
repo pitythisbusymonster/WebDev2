@@ -20,7 +20,11 @@ namespace AmberTurnerSite.Controllers
             _logger = logger;
         }*/
 
-
+        /*ForumContext context;//
+        public HomeController(ForumContext c)//
+        {
+            context = c;
+        }*/
 
         IPosts repo;
 
@@ -53,6 +57,8 @@ namespace AmberTurnerSite.Controllers
 
             //store the model in the db
             repo.AddPost(model);
+            
+            //is it not saveing to DB because no context.SaveChanges();  ?
 
             return View(model);
         }
@@ -61,7 +67,8 @@ namespace AmberTurnerSite.Controllers
         {
             //get all posts in the db
             List<Forum> posts = repo.Posts.ToList<Forum>();
-            //var forumPosts = context.Forum.Include(post => post.PostCreator).ToList<Forum>();  
+
+            //var posts = context.Posts.Include(post => post.PostCreator).ToList<Forum>();  
 
             return View(posts);
         }

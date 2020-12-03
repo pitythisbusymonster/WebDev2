@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/fallcs295/databases/LastTry",
+      "type": "mssql.azure",
+      "connectionId": "SQLServerConnection",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}
