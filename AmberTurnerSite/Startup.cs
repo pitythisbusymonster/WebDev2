@@ -44,7 +44,7 @@ namespace AmberTurnerSite
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ForumContext context)
         {
             if (env.IsDevelopment())
             {
@@ -70,7 +70,7 @@ namespace AmberTurnerSite
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //TODO: Call the seed method
+            SeedData.Seed(context);
         }
     }
 }

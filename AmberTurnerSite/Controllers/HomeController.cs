@@ -57,8 +57,6 @@ namespace AmberTurnerSite.Controllers
 
             //store the model in the db
             repo.AddPost(model);
-            
-            //is it not saveing to DB because no context.SaveChanges();  ?
 
             return View(model);
         }
@@ -70,6 +68,15 @@ namespace AmberTurnerSite.Controllers
 
             //var posts = context.Posts.Include(post => post.PostCreator).ToList<Forum>();  
 
+            return View(posts);
+        }
+
+        [HttpPost]
+        public IActionResult ForumPosts(string pageName)
+        {
+            var posts = (from r in repo.Posts
+                           where r.PageName == pageName
+                           select r).ToList();
             return View(posts);
         }
 
