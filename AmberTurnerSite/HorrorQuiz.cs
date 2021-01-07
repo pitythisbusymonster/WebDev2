@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AmberTurnerSite
 {
-    public class HorrorQuiz
+    /*public class HorrorQuiz
     {
         public static string CheckAnswers(int qNumber, string answer)
         {
@@ -28,5 +28,5 @@ namespace AmberTurnerSite
             return correct;
         }
 
-    }
+    }*/
 }

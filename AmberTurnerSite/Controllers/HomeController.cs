@@ -20,7 +20,11 @@ namespace AmberTurnerSite.Controllers
             _logger = logger;
         }*/
 
-
+        /*ForumContext context;//
+        public HomeController(ForumContext c)//
+        {
+            context = c;
+        }*/
 
         IPosts repo;
 
@@ -61,8 +65,18 @@ namespace AmberTurnerSite.Controllers
         {
             //get all posts in the db
             List<Forum> posts = repo.Posts.ToList<Forum>();
-            //var forumPosts = context.Forum.Include(post => post.PostCreator).ToList<Forum>();  
 
+            //var posts = context.Posts.Include(post => post.PostCreator).ToList<Forum>();  
+
+            return View(posts);
+        }
+
+        [HttpPost]
+        public IActionResult ForumPosts(string pageName)
+        {
+            var posts = (from r in repo.Posts
+                           where r.PageName == pageName
+                           select r).ToList();
             return View(posts);
         }
 

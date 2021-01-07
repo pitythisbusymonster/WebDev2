@@ -4,7 +4,22 @@
     ViewData["Title"] = "Forum Posts";
 }
 
-@foreach (Forum post in Model)  
+<h1 class="display-4">Filter Posts</h1>
+Enter a page name:
+<form method="post" class="container">
+    <div class="row p-2">
+        <label for="PageName" class="control-label col-md-1">Title</label>
+        <input name="PageName" class="form-control col-md-6" />
+    </div>
+    <div class="row p-2">
+        <button type="submit" class="form-control btn btn-success col-2">Submit</button>
+        <a asp-action="ForumPosts" class="btn btn-secondary col-3">Reset</a>
+    </div>
+</form>
+
+<h1 class="display-4">Forum Posts</h1>
+
+@foreach (Forum post in Model)
 {
     <p>
         <strong class="m-3">Page Name:</strong>

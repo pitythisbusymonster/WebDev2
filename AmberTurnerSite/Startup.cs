@@ -1,11 +1,7 @@
 using System.Runtime.InteropServices;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
 using AmberTurnerSite.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-//using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,13 +27,24 @@ namespace AmberTurnerSite
             //inject our repos into controllers
             services.AddTransient<IPosts, ForumRepository>();
 
-            services.AddDbContext<ForumContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
+            //services.AddDbContext<ForumContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                // Assuming that SQL Server is installed on Windows
+                services.AddDbContext<ForumContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
+            }
+            else
+            {
+                // Assuming SQLite is installed on all other operating systems
+                services.AddDbContext<ForumContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
+            }
 
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ForumContext context)
         {
             if (env.IsDevelopment())
             {
@@ -62,6 +69,8 @@ namespace AmberTurnerSite
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SeedData.Seed(context);
         }
     }
 }

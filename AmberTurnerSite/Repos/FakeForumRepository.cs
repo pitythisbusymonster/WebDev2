@@ -22,10 +22,10 @@ namespace AmberTurnerSite.Repos
             posts.Add(post);
         }
 
-        public Forum GetPostByPageName(string title)
+        /*public Forum GetPostByPageName(string title)
         {
             throw new NotImplementedException();
-        }
+        }*/
          
     }
 }
