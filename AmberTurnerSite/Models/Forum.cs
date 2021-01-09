@@ -19,11 +19,11 @@ namespace AmberTurnerSite.Models
 
         public string PageRating { get; set; }
 
-        [Required] 
+        [Required(ErrorMessage = "Text is required to post")]
+        [StringLength(200, MinimumLength = 10)]
         public string PostText { get; set; }
 
-        [Required(ErrorMessage = "Poster name is required")]
-        [StringLength(100, MinimumLength = 3)]
+        [Required]
         public User PostCreator { get; set; }
 
         public DateTime PostDate { get; set; }

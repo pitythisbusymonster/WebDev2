@@ -13,7 +13,7 @@
 </div>
 
 <div class="form-group">
-    <div asp-validation-summary="All" ></div>
+    <div asp-validation-summary="All"></div>
     <form method="post" class="container">
         <div class="row">
             <label asp-for="PageName" class="control-label col-sm-2">Page Name:</label>
@@ -28,7 +28,7 @@
         <div class="row">
             <label asp-for="PostText" class="control-label col-sm-2">Post:</label>
             <input asp-for="PostText" class="form-control col-sm-10 mb-2" style="height:300px" />
-            <span asp-validation-for="PostText" ></span>
+            <span asp-validation-for="PostText"></span>
         </div>
         <div class="row">
             <label asp-for="PostCreator.Name" class="control-label col-sm-2">Written By:</label>
@@ -39,25 +39,9 @@
             <button type="submit" class="btn btn-dark">Post Message</button>
         </div>
     </form>
+
+    <div><a href="/Home/ForumPosts"> View Posts Here</a></div>
 </div>
 
-<br />
-<br />
-<!--<h2>Post Thread</h2>
-<p>
-    <strong class="m-3">Page Name:</strong>
-    @Model.PageName <br /><br />
 
-    <strong class="m-3">Rating:</strong>
-    @Model.PageRating <br /><br />
-
-    <strong class="m-3">Post:</strong>
-    @Model.PostText <br /><br />
-
-    <strong class="m-3">Written By:</strong>
-    @Model.PostCreator.Name <br /><br />
-
-    <strong class="m-3">Date:</strong>
-    @Model.PostDate <br /><br />
-</p>-->
     

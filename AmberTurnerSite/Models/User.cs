@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AmberTurnerSite.Models
 {
-    public class User       //all is exact same as Brian's
+    public class User       
     {
         public int UserID { get; set; } //
 
