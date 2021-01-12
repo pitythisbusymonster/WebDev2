@@ -13,18 +13,6 @@ namespace AmberTurnerSite.Controllers
 {
     public class HomeController : Controller
     {
-        /*private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }*/
-
-        /*ForumContext context;//
-        public HomeController(ForumContext c)//
-        {
-            context = c;
-        }*/
 
         IPosts repo;
 
@@ -40,23 +28,29 @@ namespace AmberTurnerSite.Controllers
 
         public IActionResult Forum()
         {
-            Forum model = new Forum();
+            /*Forum model = new Forum();
             User uName = new User();
             model.PostCreator = uName;
             model.PostDate = DateTime.Now;
 
-            return View(model);
+            return View(model);*/
 
-            //return View();
+            return View();
         }
 
         [HttpPost]
         public IActionResult Forum(Forum model)
         {
-            model.PostDate = DateTime.Now;
-
+            /*model.PostDate = DateTime.Now;
             //store the model in the db
-            repo.AddPost(model);
+            repo.AddPost(model);*/
+
+            if (ModelState.IsValid)
+            {
+                model.PostDate = DateTime.Now;
+                // Store the model in the database
+                repo.AddPost(model);
+            }
 
             return View(model);
         }
@@ -72,11 +66,26 @@ namespace AmberTurnerSite.Controllers
         }
 
         [HttpPost]
-        public IActionResult ForumPosts(string pageName)
+        public IActionResult ForumPosts(string pageName, string postCreator)
         {
-            var posts = (from r in repo.Posts
+            /*var posts = (from r in repo.Posts
+                           where r.PageName == pageName
+                           select r).ToList();*/
+            List<Forum> posts = null;
+
+            if (pageName != null)
+            {
+                posts = (from r in repo.Posts
                            where r.PageName == pageName
                            select r).ToList();
+            }
+            else if (postCreator != null)
+            {
+                posts = (from r in repo.Posts
+                           where r.PostCreator.Name == postCreator
+                           select r).ToList();
+            }
+
             return View(posts);
         }
 
