@@ -21,7 +21,7 @@ namespace AmberTurnerSite.Models
 
         [Required(ErrorMessage = "Text is required to post")]
         [StringLength(200, MinimumLength = 10)]
-        public string PostText { get; set; }
+         public string PostText { get; set; }
 
         [Required]
         public User PostCreator { get; set; }
