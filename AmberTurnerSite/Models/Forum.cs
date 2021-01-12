@@ -24,7 +24,7 @@ namespace AmberTurnerSite.Models
          public string PostText { get; set; }
 
         [Required]
-        public User PostCreator { get; set; }
+        public AppUser PostCreator { get; set; }
 
         public DateTime PostDate { get; set; }
 

@@ -21,7 +21,7 @@ namespace Test2
             {
                 PageName = "Dracula",
                 PageRating = "5 Stars",
-                PostCreator = new User() { Name = "Me" },
+                PostCreator = new AppUser() { Name = "Me" },
                 PostText = "I wish Stoker hadn't died before he saw the impact his book made"
             };
 
@@ -46,7 +46,7 @@ namespace Test2
             {
                 PageName = "The Willows",
                 PageRating = "5 Stars",
-                PostCreator = new User() { Name = "Me" },
+                PostCreator = new AppUser() { Name = "Me" },
                 PostText = "So underrated!"
             };
 

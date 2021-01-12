@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AmberTurnerSite.Repos;
+using Microsoft.AspNetCore.Identity;
 
 namespace AmberTurnerSite
 {
@@ -40,6 +41,10 @@ namespace AmberTurnerSite
                 services.AddDbContext<ForumContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
             }
 
+            //added for Identity
+            services.AddIdentity<AppUser, IdentityRole>()
+                .AddEntityFrameworkStores<ForumContext>()
+                .AddDefaultTokenProviders();
 
         }
 
@@ -62,6 +67,8 @@ namespace AmberTurnerSite
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();    //added 1.12.21
 
             app.UseEndpoints(endpoints =>
             {
