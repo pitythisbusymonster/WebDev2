@@ -12,16 +12,20 @@ namespace AmberTurnerSite.Models
         //these become foreign keys, for db
         public int ForumID {get; set;} //
 
-        [Required(ErrorMessage = "Title is required")]
-        [StringLength(100, MinimumLength = 3,
-            ErrorMessage = "Title must be between 3 and 100 characters")]
+        [Required(ErrorMessage = "A page name is required")]
+        [StringLength(20, MinimumLength = 3,
+            ErrorMessage = "Page name must be between 3 and 20 characters")]
         public string PageName { get; set; }
 
+        [Required(ErrorMessage = "A page rating is required")]
+        [StringLength(1, MinimumLength = 1,
+            ErrorMessage = "You must give a rating 1-5")]
         public string PageRating { get; set; }
 
         [Required(ErrorMessage = "Text is required to post")]
-        [StringLength(200, MinimumLength = 10)]
-         public string PostText { get; set; }
+        [StringLength(200, MinimumLength = 10, 
+            ErrorMessage = "A post must be at least 10 characters and no more than 200 characters")]
+        public string PostText { get; set; }
 
         [Required]
         public AppUser PostCreator { get; set; }

@@ -12,7 +12,7 @@ namespace AmberTurnerSite.Models
     {
         //public int UserID { get; set; } //remove, because conflists with Identity inheritence
 
-        [StringLength(100, MinimumLength = 3)]
+        [StringLength(15, MinimumLength = 3, ErrorMessage = "Your name must be between 3 and 15 characters")]
         [Required]
         public string Name { get; set; }
     }
