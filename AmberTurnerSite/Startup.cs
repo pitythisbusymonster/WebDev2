@@ -66,9 +66,9 @@ namespace AmberTurnerSite
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseAuthentication();    //added 1.12.21
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
