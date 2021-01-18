@@ -18,7 +18,7 @@ namespace AmberTurnerSite.Models
                     PageName = "The Monk",
                     PageRating = "5",
                     PostText = "Great book, a must read!",
-                    PostCreator = new User { Name = "Shel Silverstein" },
+                    PostCreator = new AppUser { Name = "Shel Silverstein" },
                     PostDate = DateTime.Parse("11/1/2020")
                 };
 
@@ -29,7 +29,7 @@ namespace AmberTurnerSite.Models
                     PageName = "The Monk",
                     PageRating = "5",
                     PostText = "So creepy, even for a modern reader",
-                    PostCreator = new User { Name = "George Eliot" },
+                    PostCreator = new AppUser { Name = "George Eliot" },
                     PostDate = DateTime.Parse("11/12/2020")
                 };
 
@@ -39,7 +39,7 @@ namespace AmberTurnerSite.Models
                 // the user object once and store it so that both reviews will be
                 // associated with the same entity in the DB.
 
-                User posterSarahCrew = new User() { Name = "Sarah Crew" };
+                AppUser posterSarahCrew = new AppUser() { Name = "Sarah Crew" };
                 context.Users.Add(posterSarahCrew);
                 context.SaveChanges();   // This will add a UserID to the reviewer object
 
