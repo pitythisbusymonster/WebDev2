@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "mssql1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/fallcs295/databases/ClassSite",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/fallcs295/databases/Class2Site",
       "type": "mssql.azure",
       "connectionId": "SQLServerConnection",
       "secretStore": "AzureAppSettings"

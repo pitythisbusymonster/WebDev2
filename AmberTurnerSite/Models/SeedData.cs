@@ -18,7 +18,7 @@ namespace AmberTurnerSite.Models
                     PageName = "The Monk",
                     PageRating = "5",
                     PostText = "Great book, a must read!",
-                    PostCreator = new AppUser { Name = "Shel Silverstein" },
+                    PostCreator = new AppUser { Name = "S. Silverstein" },
                     PostDate = DateTime.Parse("11/1/2020")
                 };
 

@@ -76,7 +76,7 @@ namespace AmberTurnerSite.Migrations
                         .WithMany()
                         .HasForeignKey("PostCreatorUserID");
 
-                    b.Navigation("PostCreator");
+                    //b.Navigation("PostCreator");
                 });
 #pragma warning restore 612, 618
         }

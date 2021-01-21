@@ -27,7 +27,7 @@ namespace AmberTurnerSite.Models
             ErrorMessage = "A post must be at least 10 characters and no more than 200 characters")]
         public string PostText { get; set; }
 
-        [Required]
+        //[Required]
         public AppUser PostCreator { get; set; }
 
         public DateTime PostDate { get; set; }
