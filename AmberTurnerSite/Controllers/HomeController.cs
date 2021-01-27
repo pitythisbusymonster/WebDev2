@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-//using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-//using Microsoft.Extensions.Logging;
 using AmberTurnerSite.Models;
 using AmberTurnerSite.Repos;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmberTurnerSite.Controllers
 {
@@ -15,10 +15,12 @@ namespace AmberTurnerSite.Controllers
     {
 
         IPosts repo;
+        UserManager<AppUser> userManager;
 
-        public HomeController(IPosts r)//
+        public HomeController(IPosts r, UserManager<AppUser> u)
         {
             repo = r;
+            userManager = u;
         }
         
         public IActionResult Index()
@@ -26,33 +28,23 @@ namespace AmberTurnerSite.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Forum()
         {
-            /*Forum model = new Forum();
-            User uName = new User();
-            model.PostCreator = uName;
-            model.PostDate = DateTime.Now;
-
-            return View(model);*/
-
             return View();
         }
 
         [HttpPost]
         public IActionResult Forum(Forum model)
         {
-            /*model.PostDate = DateTime.Now;
-            //store the model in the db
-            repo.AddPost(model);*/
-
-            if (ModelState.IsValid)
-            {
-                model.PostDate = DateTime.Now;
-                // Store the model in the database
-                repo.AddPost(model);
-            }
+            model.PostCreator = userManager.GetUserAsync(User).Result;
+            model.PostCreator.Name = model.PostCreator.UserName; 
+            model.PostDate = DateTime.Now;
+            repo.AddPost(model);
 
             return View(model);
+
+            // TODO: get the user's real name in registration
         }
 
         public IActionResult ForumPosts()//
@@ -68,9 +60,6 @@ namespace AmberTurnerSite.Controllers
         [HttpPost]
         public IActionResult ForumPosts(string pageName, string postCreator)
         {
-            /*var posts = (from r in repo.Posts
-                           where r.PageName == pageName
-                           select r).ToList();*/
             List<Forum> posts = null;
 
             if (pageName != null)
@@ -94,16 +83,5 @@ namespace AmberTurnerSite.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-
-        /*[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }*/
     }
 }
