@@ -51,12 +51,10 @@ namespace AmberTurnerSite.Controllers
         }
 
         [HttpGet]
-        public IActionResult LogIn(string returnURL = "")
+        public IActionResult LogIn(string returnURL /*= ""*/) //removed the assignment lab4
         {
-            var model = new LoginVM
-            {
-                ReturnUrl = returnURL
-            };
+            var model = new LoginVM{
+            ReturnUrl = returnURL   };
             return View(model);
         }
 
@@ -87,6 +85,11 @@ namespace AmberTurnerSite.Controllers
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        public ViewResult AccessDenied()
+        {
+            return View();
         }
     }
 }

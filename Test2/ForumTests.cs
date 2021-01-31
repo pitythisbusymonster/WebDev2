@@ -16,7 +16,7 @@ namespace Test2
             
             // Arrange
             var fakeRepo = new FakeForumRepository();
-            var controller = new HomeController(fakeRepo);
+            var controller = new HomeController(fakeRepo, null);
             var post = new Forum()
             {
                 PageName = "Dracula",
@@ -41,7 +41,7 @@ namespace Test2
 
             // Arrange
             var fakeRepo = new FakeForumRepository();
-            var controller = new HomeController(fakeRepo);
+            var controller = new HomeController(fakeRepo, null);
             var post = new Forum()
             {
                 PageName = "The Willows",

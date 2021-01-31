@@ -28,7 +28,7 @@ namespace AmberTurnerSite.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize] //this being present means only those logged in can have access
         public IActionResult Forum()
         {
             return View();
