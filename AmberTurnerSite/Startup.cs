@@ -1,13 +1,15 @@
 using System.Runtime.InteropServices;
 using AmberTurnerSite.Models;
+using AmberTurnerSite.Repos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using AmberTurnerSite.Repos;
-using Microsoft.AspNetCore.Identity;
+
+
 
 namespace AmberTurnerSite
 {
@@ -23,12 +25,14 @@ namespace AmberTurnerSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // This service allows me to edit .cshtml views and see the result without restarting
+            // This service requires the Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation NuGet package
+            //services.AddRazorPages().AddRazorRuntimeCompilation();
+
             services.AddControllersWithViews();
 
             //inject our repos into controllers
             services.AddTransient<IPosts, ForumRepository>();
-
-            //services.AddDbContext<ForumContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
@@ -77,7 +81,11 @@ namespace AmberTurnerSite
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            SeedData.Seed(context);
+            var serviceProvider = app.ApplicationServices;
+            var userManager = serviceProvider.GetRequiredService<UserManager<AppUser>>();
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            SeedData.Seed(context, userManager, roleManager);
         }
     }
 }

@@ -32,9 +32,5 @@ namespace AmberTurnerSite.Repos
             context.SaveChanges();
         }
 
-        /*public Forum GetPostByPageName(string title)
-        {
-            throw new NotImplementedException();
-        }*/
     }
 }
