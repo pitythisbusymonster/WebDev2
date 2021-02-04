@@ -10,7 +10,6 @@ using AmberTurnerSite.Models;
 namespace AmberTurnerSite.Controllers
 {
     [Authorize(Roles = "Admin")]
-    [Area("Admin")]
     public class AdminController : Controller
     {
         private UserManager<AppUser> userManager;
