@@ -44,7 +44,6 @@ namespace AmberTurnerSite.Controllers
 
             return View(model);
 
-            // TODO: get the user's real name in registration
         }
 
         public IActionResult ForumPosts()//
@@ -83,5 +82,24 @@ namespace AmberTurnerSite.Controllers
             return View();
         }
 
+        //open form for entering reply
+        [Authorize] 
+        public IActionResult Reply()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult Reply(Reply model)
+        {
+            model.Replier = userManager.GetUserAsync(User).Result;
+            model.Replier.Name = model.Replier.UserName;
+            model.ReplyDate = DateTime.Now;
+           // repo.AddReply(model);
+
+            return View(model);
+
+        }
     }
 }

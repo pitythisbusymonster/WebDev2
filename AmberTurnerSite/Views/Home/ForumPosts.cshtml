@@ -21,22 +21,25 @@ Enter a page name:
 
 @foreach (Forum post in Model)
 {
-    <p>
-        <strong class="m-3">Page Name:</strong>
-        @post.PageName <br /><br />
+<p>
+    <strong class="m-3">Page Name:</strong>
+    @post.PageName <br /><br />
 
-        <strong class="m-3">Rating:</strong>
-        @post.PageRating <br /><br />
+    <strong class="m-3">Rating:</strong>
+    @post.PageRating <br /><br />
 
-        <strong class="m-3">Post:</strong>
-        @post.PostText <br /><br />
+    <strong class="m-3">Post:</strong>
+    @post.PostText <br /><br />
 
-        <strong class="m-3">Written By:</strong>
-        @post.PostCreator.Name <br /><br />
+    <strong class="m-3">Written By:</strong>
+    @post.PostCreator.Name <br /><br />
 
-        <strong class="m-3">Date:</strong>
-        @post.PostDate <br /><br />
-    </p>
+    <strong class="m-3">Date:</strong>
+    @post.PostDate <br /><br />
+
+   @* <div><a href="/Home/Reply"> Reply to this Post Here</a></div>
+    @post.ReplyText  <br /><br /><br /><br /> *@
+</p>
 }
 
 

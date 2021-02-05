@@ -9,6 +9,8 @@ namespace AmberTurnerSite.Models
 {
     public class Forum
     {
+        private List<Reply> replies = new List<Reply>();        //list object
+
         //these become foreign keys, for db
         public int ForumID {get; set;} //
 
@@ -27,11 +29,13 @@ namespace AmberTurnerSite.Models
             ErrorMessage = "A post must be at least 10 characters and no more than 200 characters")]
         public string PostText { get; set; }
 
-        //[Required]
         public AppUser PostCreator { get; set; }
 
         public DateTime PostDate { get; set; }
 
-        
+        public List<Reply> Replies 
+        { 
+            get { return replies; }             //reply object, w/n list object
+        }
     }
 }
