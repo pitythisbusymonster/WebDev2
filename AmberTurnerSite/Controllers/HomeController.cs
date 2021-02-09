@@ -44,7 +44,6 @@ namespace AmberTurnerSite.Controllers
 
             return View(model);
 
-            // TODO: get the user's real name in registration
         }
 
         public IActionResult ForumPosts()//
@@ -83,5 +82,34 @@ namespace AmberTurnerSite.Controllers
             return View();
         }
 
+        //open form for entering reply
+        [Authorize] 
+        public IActionResult Reply(int forumId)
+        {
+            var replyVM = new ReplyVM { ForumID = forumId };
+            return View(replyVM);
+        }
+
+
+        [HttpPost]
+        public RedirectToActionResult Reply(ReplyVM replyVM)  //IActionResult
+        {
+            //Reply is the domain model
+            var reply = new Reply { ReplyText = replyVM.ReplyText };            
+            reply.Replier = userManager.GetUserAsync(User).Result;
+            reply.ReplyDate = DateTime.Now;
+
+            //retrieve the post replying to
+            var post = (from r in repo.Posts
+                        where r.ForumID == replyVM.ForumID
+                        select r).First<Forum>();
+
+            //store the reply with the post in the db
+            post.Replies.Add(reply);
+            repo.UpdatePost(post);
+
+            //return View(reply);
+            return RedirectToAction("ForumPosts");
+        }
     }
 }

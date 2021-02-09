@@ -7,7 +7,9 @@ namespace AmberTurnerSite.Models
     {
         public ForumContext (
             DbContextOptions<ForumContext> options) : base(options) { }
-        public DbSet<Forum> Posts { get; set; } //these represent tables, in the db //changed from Forum to Posts 
+        public DbSet<Forum> Posts { get; set; } //represent tables, in the db
+
+        public DbSet<Reply> Replies { get; set; }
 
     }
 }

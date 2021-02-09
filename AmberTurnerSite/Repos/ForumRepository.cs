@@ -21,7 +21,9 @@ namespace AmberTurnerSite.Repos
         { 
             get 
             { 
-                return context.Posts.Include(post => post.PostCreator); 
+                return context.Posts.Include(post => post.PostCreator)
+                                    .Include(post => post.Replies)
+                                    .ThenInclude(reply => reply.Replier); 
             } 
         }
         
@@ -32,5 +34,10 @@ namespace AmberTurnerSite.Repos
             context.SaveChanges();
         }
 
+        public void UpdatePost(Forum post)
+        {
+            context.Posts.Update(post);
+            context.SaveChanges();
+        }
     }
 }
