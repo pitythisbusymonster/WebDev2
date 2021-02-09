@@ -21,25 +21,46 @@ Enter a page name:
 
 @foreach (Forum post in Model)
 {
-<p>
-    <strong class="m-3">Page Name:</strong>
-    @post.PageName <br /><br />
+    <p>
+        <br />
+        <strong class="m-3">Page Name:</strong>
+        @post.PageName <br />
 
-    <strong class="m-3">Rating:</strong>
-    @post.PageRating <br /><br />
+        <strong class="m-3">Rating:</strong>
+        @post.PageRating <br />
 
-    <strong class="m-3">Post:</strong>
-    @post.PostText <br /><br />
+        <strong class="m-3">Post:</strong>
+        @post.PostText <br />
 
-    <strong class="m-3">Written By:</strong>
-    @post.PostCreator.Name <br /><br />
+        <strong class="m-3">Written By:</strong>
+        @post.PostCreator.Name <br />
 
-    <strong class="m-3">Date:</strong>
-    @post.PostDate <br /><br />
+        <strong class="m-3">Date:</strong>
+        @post.PostDate <br />
 
-   @* <div><a href="/Home/Reply"> Reply to this Post Here</a></div>
-    @post.ReplyText  <br /><br /><br /><br /> *@
-</p>
+
+    </p>
+
+    @if (post.Replies.Count != 0)
+    {
+        <h3>Replies</h3>
+
+        @foreach (Reply reply in post.Replies)
+        {
+            <p>
+                <strong class="m-3">Reply:</strong>
+                @reply.ReplyText <br />
+
+                <strong class="m-3">From:</strong>
+                @reply.Replier.Name <br />
+
+                <strong class="m-3">Date:</strong>
+                @reply.ReplyDate.Date <br />
+            </p>
+        }
+    }
+    <a asp-action="Reply" asp-route-replyId="@post.ForumID" class="btn btn-secondary">Reply to Post</a>
+    
 }
 
 

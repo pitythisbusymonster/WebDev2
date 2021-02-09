@@ -84,22 +84,32 @@ namespace AmberTurnerSite.Controllers
 
         //open form for entering reply
         [Authorize] 
-        public IActionResult Reply()
+        public IActionResult Reply(int forumId)
         {
-            return View();
+            var replyVM = new ReplyVM { ForumID = forumId };
+            return View(replyVM);
         }
 
 
         [HttpPost]
-        public IActionResult Reply(Reply model)
+        public RedirectToActionResult Reply(ReplyVM replyVM)  //IActionResult
         {
-            model.Replier = userManager.GetUserAsync(User).Result;
-            model.Replier.Name = model.Replier.UserName;
-            model.ReplyDate = DateTime.Now;
-           // repo.AddReply(model);
+            //Reply is the domain model
+            var reply = new Reply { ReplyText = replyVM.ReplyText };
+            reply.Replier = userManager.GetUserAsync(User).Result;
+            reply.ReplyDate = DateTime.Now;
 
-            return View(model);
+            //retrieve the post replying to
+            var post = (from r in repo.Posts
+                        where r.ForumID == replyVM.ForumID
+                        select r).First<Forum>();
 
+            //store the reply with the post in the db
+            post.Replies.Add(reply);
+            repo.UpdatePost(post);
+
+            //return View(reply);
+            return RedirectToAction("Posts");
         }
     }
 }

@@ -32,10 +32,10 @@ namespace AmberTurnerSite.Repos
             context.SaveChanges();
         }
 
-        /*public void AddReply(Reply reply) //Forum or Reply?
+        public void UpdatePost(Forum post)
         {
-            context.Replies.Add(reply);
+            context.Posts.Update(post);
             context.SaveChanges();
-        }*/
+        }
     }
 }
