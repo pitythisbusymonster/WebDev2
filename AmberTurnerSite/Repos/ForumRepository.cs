@@ -21,7 +21,9 @@ namespace AmberTurnerSite.Repos
         { 
             get 
             { 
-                return context.Posts.Include(post => post.PostCreator); 
+                return context.Posts.Include(post => post.PostCreator)
+                                    .Include(post => post.Replies)
+                                    .ThenInclude(reply => reply.Replier); 
             } 
         }
         

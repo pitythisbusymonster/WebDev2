@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AmberTurnerSite.Migrations
 {
@@ -23,6 +24,9 @@ namespace AmberTurnerSite.Migrations
                 {
                     ReplyID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    ReplyText = table.Column<string>(nullable: true),
+                    ReplyDate = table.Column<DateTime>(nullable: false),
+                    ReplierId = table.Column<string>(nullable: true),
                     ForumID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -34,12 +38,23 @@ namespace AmberTurnerSite.Migrations
                         principalTable: "Posts",
                         principalColumn: "ForumID",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Replies_AspNetUsers_ReplierId",
+                        column: x => x.ReplierId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Replies_ForumID",
                 table: "Replies",
                 column: "ForumID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Replies_ReplierId",
+                table: "Replies",
+                column: "ReplierId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Posts_AspNetUsers_PostCreatorId",

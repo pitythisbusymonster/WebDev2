@@ -17,6 +17,10 @@ Enter a page name:
     </div>
 </form>
 
+
+
+
+
 <h1 class="display-4">Forum Posts</h1>
 
 @foreach (Forum post in Model)
@@ -38,7 +42,6 @@ Enter a page name:
         <strong class="m-3">Date:</strong>
         @post.PostDate <br />
 
-
     </p>
 
     @if (post.Replies.Count != 0)
@@ -51,16 +54,18 @@ Enter a page name:
                 <strong class="m-3">Reply:</strong>
                 @reply.ReplyText <br />
 
-                <strong class="m-3">From:</strong>
-                @reply.Replier.Name <br />
-
                 <strong class="m-3">Date:</strong>
                 @reply.ReplyDate.Date <br />
+
+                <strong class="m-3">From:</strong>
+                @reply.Replier <br />
+
+
             </p>
         }
     }
-    <a asp-action="Reply" asp-route-replyId="@post.ForumID" class="btn btn-secondary">Reply to Post</a>
-    
+    <a asp-action="Reply" asp-route-forumId="@post.ForumID" class="btn btn-secondary">Reply to Post</a>
+
 }
 
 

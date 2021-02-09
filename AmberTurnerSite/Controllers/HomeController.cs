@@ -95,7 +95,7 @@ namespace AmberTurnerSite.Controllers
         public RedirectToActionResult Reply(ReplyVM replyVM)  //IActionResult
         {
             //Reply is the domain model
-            var reply = new Reply { ReplyText = replyVM.ReplyText };
+            var reply = new Reply { ReplyText = replyVM.ReplyText };            
             reply.Replier = userManager.GetUserAsync(User).Result;
             reply.ReplyDate = DateTime.Now;
 
@@ -109,7 +109,7 @@ namespace AmberTurnerSite.Controllers
             repo.UpdatePost(post);
 
             //return View(reply);
-            return RedirectToAction("Posts");
+            return RedirectToAction("ForumPosts");
         }
     }
 }

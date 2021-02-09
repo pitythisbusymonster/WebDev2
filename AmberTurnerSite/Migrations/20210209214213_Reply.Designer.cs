@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AmberTurnerSite.Migrations
 {
     [DbContext(typeof(ForumContext))]
-    [Migration("20210205012512_Reply")]
+    [Migration("20210209214213_Reply")]
     partial class Reply
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,9 +66,20 @@ namespace AmberTurnerSite.Migrations
                     b.Property<int?>("ForumID")
                         .HasColumnType("int");
 
+                    b.Property<string>("ReplierId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("ReplyDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReplyText")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ReplyID");
 
                     b.HasIndex("ForumID");
+
+                    b.HasIndex("ReplierId");
 
                     b.ToTable("Replies");
                 });
@@ -299,6 +310,10 @@ namespace AmberTurnerSite.Migrations
                     b.HasOne("AmberTurnerSite.Models.Forum", null)
                         .WithMany("Replies")
                         .HasForeignKey("ForumID");
+
+                    b.HasOne("AmberTurnerSite.Models.AppUser", "Replier")
+                        .WithMany()
+                        .HasForeignKey("ReplierId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
