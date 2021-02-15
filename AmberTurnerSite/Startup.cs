@@ -2,7 +2,9 @@ using System.Runtime.InteropServices;
 using AmberTurnerSite.Models;
 using AmberTurnerSite.Repos;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +17,7 @@ namespace AmberTurnerSite
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -55,6 +58,20 @@ namespace AmberTurnerSite
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ForumContext context)
         {
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+                context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+                context.Response.Headers.Add("Pragma", "no-cache");
+                context.Response.Headers.Add("Cache-Control", "no-cache");
+                //context.Response.Headers.Add("Cache-Control", "no-store");
+                //context.Response.Headers.Add("Cache-Control", "must-revalidate");
+                await next();
+            });
+
+            app.UseCookiePolicy(new CookiePolicyOptions { HttpOnly = HttpOnlyPolicy.Always, Secure = CookieSecurePolicy.Always });
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -80,6 +97,8 @@ namespace AmberTurnerSite
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            
 
             var serviceProvider = app.ApplicationServices;
             var userManager = serviceProvider.GetRequiredService<UserManager<AppUser>>();
