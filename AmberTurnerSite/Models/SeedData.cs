@@ -92,7 +92,7 @@ namespace AmberTurnerSite.Models
                 context.Posts.Add(post);
 
                 //testing an issue
-                
+                /*
                 AppUser posterAmber = new AppUser() { UserName = "itsMe", Name = "Amber" };
                 context.Users.Add(posterAmber);
                 context.SaveChanges();   // This will add a UserID to the reviewer object
@@ -106,17 +106,7 @@ namespace AmberTurnerSite.Models
                     PostDate = DateTime.Parse("1/21/2020")
                 };
                 context.Posts.Add(post);
-
-                /*post = new Forum
-                {
-                    PageName = "Scary Stories to Tell in the Dark",
-                    PageRating = "4",
-                    PostText = "What do you guys think about the recent movie based on the children's classic?",
-                    PostCreator = posterAmber,
-                    PostDate = DateTime.Parse("1/30/2020")
-                };
-                context.Posts.Add(post);*/
-
+                */
 
                 context.SaveChanges(); // stores all the reviews in the DB
 
