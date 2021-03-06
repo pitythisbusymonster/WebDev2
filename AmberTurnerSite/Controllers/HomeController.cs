@@ -25,24 +25,38 @@ namespace AmberTurnerSite.Controllers
         
         public IActionResult Index()
         {
-            return View();
+            return View(); 
         }
 
         [Authorize] //this being present means only those logged in can have access
-        public IActionResult Forum()
+        public IActionResult Forum()       
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Forum(Forum model)
+        public RedirectToActionResult Forum(Forum model)
         {
-            model.PostCreator = userManager.GetUserAsync(User).Result;
-            model.PostCreator.Name = model.PostCreator.UserName; 
-            model.PostDate = DateTime.Now;
-            repo.AddPost(model);
+            /* model.PostCreator = userManager.GetUserAsync(User).Result;
+             model.PostCreator.Name = model.PostCreator.UserName; 
+             model.PostDate = DateTime.Now;
+             repo.AddPost(model);
 
-            return View(model);
+             return View(model);*/
+
+            if (ModelState.IsValid)
+            {
+                model.PostCreator = userManager.GetUserAsync(User).Result;
+                model.PostCreator.Name = model.PostCreator.UserName;
+                model.PostDate = DateTime.Now;
+                repo.AddPost(model);
+            }
+            else
+            {
+                return RedirectToAction("Forum");
+            }
+
+            return RedirectToAction("ForumPosts");
 
         }
 
@@ -95,7 +109,7 @@ namespace AmberTurnerSite.Controllers
         public RedirectToActionResult Reply(ReplyVM replyVM)  //IActionResult
         {
             //Reply is the domain model
-            var reply = new Reply { ReplyText = replyVM.ReplyText };            
+            var reply = new Reply { ReplyText = replyVM.ReplyText };
             reply.Replier = userManager.GetUserAsync(User).Result;
             reply.ReplyDate = DateTime.Now;
 
@@ -111,5 +125,7 @@ namespace AmberTurnerSite.Controllers
             //return View(reply);
             return RedirectToAction("ForumPosts");
         }
+
+
     }
 }
