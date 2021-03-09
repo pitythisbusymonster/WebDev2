@@ -34,6 +34,13 @@ namespace AmberTurnerSite.Repos
             context.SaveChanges();
         }
 
+        public Forum GetPost(int id)
+        {
+            return context.Posts.Include("id").First(b => b.ForumID == id);
+            //throw new NotImplementedException();
+        }
+
+
         public void UpdatePost(Forum post)
         {
             context.Posts.Update(post);

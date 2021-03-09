@@ -8,43 +8,45 @@ using System.Threading.Tasks;
 
 namespace AmberTurnerSite.Controllers
 {
+   
     [Route("api/[controller]")]
     [ApiController]
-    public class PostApiController : Controller
+    public class PostApiController : ControllerBase
     {
-        private readonly ForumRepository _repo;
+        private readonly ForumRepository repo;
+        //private readonly IPosts repo;
 
-        public PostApiController(ForumRepository repo)
+        public PostApiController(ForumRepository repo)//IPosts repo
         {
-            _repo = repo;
+            this.repo = repo;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Forum>>> GetPosts()
         {
-            return await _repo.Posts.ToListAsync();
+            return await repo.Posts.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Forum>> GetPosts(int id)
+        public async Task<ActionResult<Forum>> GetPost(int id)
         {
-            var cPost = await _repo.Posts.Where(u => u.ForumID == id).FirstOrDefaultAsync();  //FindAsync(id);
+            var post = await repo.Posts.Where(u => u.ForumID == id).FirstOrDefaultAsync();  
 
-            if (cPost == null)
+            if (post == null)
             {
                 return NotFound();
             }
 
-            return cPost;
+            return post;
         }
 
         [HttpPost]
         public async Task<ActionResult<Forum>> PostForumPost(Forum post)
         {
-            await Task.Run(() => _repo.AddPost(post));
-            //await _repo.SaveChangesAsync();
+            await Task.Run(() => repo.AddPost(post));
+            //await repo.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetPosts), new { id = post.ForumID }, post);
+            return CreatedAtAction(nameof(GetPost), new { id = post.ForumID }, post);
         }
     }
 }

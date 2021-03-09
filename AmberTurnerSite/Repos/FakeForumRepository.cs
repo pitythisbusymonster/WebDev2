@@ -23,6 +23,12 @@ namespace AmberTurnerSite.Repos
             posts.Add(post);
         }
 
+        public Forum GetPost(int id)  //(string postCreator)
+        {
+            throw new NotImplementedException();
+        }
+
+
         public void UpdatePost(Forum post)
         {
             //context.Posts.Update(post);
