@@ -10,7 +10,15 @@ namespace AmberTurnerSite.Repos
     {
         IQueryable<Forum> Posts { get; }    // Read (or retrieve) posts
         void AddPost(Forum posts);          // Create a post
+
+        Forum GetPost(int id);   //(string postCreator); 
+
         void UpdatePost(Forum posts);
+
+
+        IQueryable<Reply> Replies { get; }
+        Reply GetReply(int id);
+        void AddReply(Reply replies);
     }
 
 }

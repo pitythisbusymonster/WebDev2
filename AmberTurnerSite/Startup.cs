@@ -37,16 +37,7 @@ namespace AmberTurnerSite
             //inject our repos into controllers
             services.AddTransient<IPosts, ForumRepository>();
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                // Assuming that SQL Server is installed on Windows
-                services.AddDbContext<ForumContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
-            }
-            else
-            {
-                // Assuming SQLite is installed on all other operating systems
-                services.AddDbContext<ForumContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
-            }
+            services.AddDbContext<ForumContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
 
             //added for Identity
             services.AddIdentity<AppUser, IdentityRole>()
@@ -63,7 +54,7 @@ namespace AmberTurnerSite
                 context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
                 context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
                 context.Response.Headers.Add("Pragma", "no-cache");
-                context.Response.Headers.Add("Cache-Control", "no-cache");
+                //context.Response.Headers.Add("Cache-Control", "no-cache");
                 //context.Response.Headers.Add("Cache-Control", "no-store");
                 //context.Response.Headers.Add("Cache-Control", "must-revalidate");
                 await next();

@@ -1,0 +1,268 @@
+Get:
+	https://localhost:44372/api/PostApi
+	
+	Results:
+	[
+    {
+        "forumID": 1,
+        "pageName": "The Monk",
+        "pageRating": "5",
+        "postText": "Great book, a must read!",
+        "postCreator": {
+            "name": "S. Silverstein",
+            "roleNames": null,
+            "id": "978fbba7-1a95-44de-b8fd-e30f2f9db2a1",
+            "userName": "SilverShel",
+            "normalizedUserName": null,
+            "email": null,
+            "normalizedEmail": null,
+            "emailConfirmed": false,
+            "passwordHash": null,
+            "securityStamp": "51d48d12-d0f8-4b52-923e-9a7f61ba665b",
+            "concurrencyStamp": "38fba9a4-72bb-4c07-ac27-cbc1170f7896",
+            "phoneNumber": null,
+            "phoneNumberConfirmed": false,
+            "twoFactorEnabled": false,
+            "lockoutEnd": null,
+            "lockoutEnabled": false,
+            "accessFailedCount": 0
+        },
+        "postDate": "2020-11-01T00:00:00",
+        "replies": []
+    },
+    {
+        "forumID": 2,
+        "pageName": "The Monk",
+        "pageRating": "5",
+        "postText": "So creepy, even for a modern reader",
+        "postCreator": {
+            "name": "George Eliot",
+            "roleNames": null,
+            "id": "89e8fac0-37ee-4f5b-817c-e20326069064",
+            "userName": "georgeEliot",
+            "normalizedUserName": null,
+            "email": null,
+            "normalizedEmail": null,
+            "emailConfirmed": false,
+            "passwordHash": null,
+            "securityStamp": "dd946152-ee5e-4d1e-83f2-b096ac080783",
+            "concurrencyStamp": "5213fb24-4938-490b-bb4b-ac94e3ccc522",
+            "phoneNumber": null,
+            "phoneNumberConfirmed": false,
+            "twoFactorEnabled": false,
+            "lockoutEnd": null,
+            "lockoutEnabled": false,
+            "accessFailedCount": 0
+        },
+        "postDate": "2020-11-12T00:00:00",
+        "replies": []
+    },
+    {
+        "forumID": 3,
+        "pageName": "NOS4A2",
+        "pageRating": "5",
+        "postText": "Joe Hill is a great writer on his own merit",
+        "postCreator": {
+            "name": "Sarah Crew",
+            "roleNames": null,
+            "id": "826d17f6-0f7e-419e-8021-2f7f9db0e699",
+            "userName": "LittlePrincess",
+            "normalizedUserName": null,
+            "email": null,
+            "normalizedEmail": null,
+            "emailConfirmed": false,
+            "passwordHash": null,
+            "securityStamp": "b5b811de-20d4-4126-a4b1-5ade4d6e0c2d",
+            "concurrencyStamp": "018a05ca-a13c-4e3b-9841-caf6738658fb",
+            "phoneNumber": null,
+            "phoneNumberConfirmed": false,
+            "twoFactorEnabled": false,
+            "lockoutEnd": null,
+            "lockoutEnabled": false,
+            "accessFailedCount": 0
+        },
+        "postDate": "2020-11-15T00:00:00",
+        "replies": []
+    },
+    {
+        "forumID": 4,
+        "pageName": "Algernon Blackwood",
+        "pageRating": "5",
+        "postText": "",
+        "postCreator": {
+            "name": "Sarah Crew",
+            "roleNames": null,
+            "id": "826d17f6-0f7e-419e-8021-2f7f9db0e699",
+            "userName": "LittlePrincess",
+            "normalizedUserName": null,
+            "email": null,
+            "normalizedEmail": null,
+            "emailConfirmed": false,
+            "passwordHash": null,
+            "securityStamp": "b5b811de-20d4-4126-a4b1-5ade4d6e0c2d",
+            "concurrencyStamp": "018a05ca-a13c-4e3b-9841-caf6738658fb",
+            "phoneNumber": null,
+            "phoneNumberConfirmed": false,
+            "twoFactorEnabled": false,
+            "lockoutEnd": null,
+            "lockoutEnabled": false,
+            "accessFailedCount": 0
+        },
+        "postDate": "2020-11-11T00:00:00",
+        "replies": []
+    },
+    {
+        "forumID": 5,
+        "pageName": "King vs Bachman",
+        "pageRating": "4",
+        "postText": "What do you think of his Bachman books?",
+        "postCreator": {
+            "name": "Amber",
+            "roleNames": null,
+            "id": "1ffd3252-3993-4d31-9283-603c3a0a12b8",
+            "userName": "itsMe",
+            "normalizedUserName": null,
+            "email": null,
+            "normalizedEmail": null,
+            "emailConfirmed": false,
+            "passwordHash": null,
+            "securityStamp": "5ed87f6e-f2b7-4f8e-93a0-9a2d22856ea3",
+            "concurrencyStamp": "fbefb8ef-87e1-40e5-8b94-8950e8114f44",
+            "phoneNumber": null,
+            "phoneNumberConfirmed": false,
+            "twoFactorEnabled": false,
+            "lockoutEnd": null,
+            "lockoutEnabled": false,
+            "accessFailedCount": 0
+        },
+        "postDate": "2020-01-21T00:00:00",
+        "replies": []
+    },
+    {
+        "forumID": 6,
+        "pageName": "PostAPi",
+        "pageRating": "4",
+        "postText": "Did it work???",
+        "postCreator": {
+            "name": "SiteAdmin",
+            "roleNames": null,
+            "id": "811d21ff-3e89-4ecc-84b3-5d6bb0bd03c2",
+            "userName": "SiteAdmin",
+            "normalizedUserName": "SITEADMIN",
+            "email": null,
+            "normalizedEmail": null,
+            "emailConfirmed": false,
+            "passwordHash": "AQAAAAEAACcQAAAAEFLyXunBPi2dQvlBNZ80fU6cSIxKrZ63gCgFPHFQt7iQ22LtlTx/AENSss8NsO7ATg==",
+            "securityStamp": "T6DFVQEGND7PFGU7AMXSSAFL4JFRCHLI",
+            "concurrencyStamp": "acb272fa-b80a-460a-80c6-9ce168673d73",
+            "phoneNumber": null,
+            "phoneNumberConfirmed": false,
+            "twoFactorEnabled": false,
+            "lockoutEnd": null,
+            "lockoutEnabled": true,
+            "accessFailedCount": 0
+        },
+        "postDate": "2021-03-05T18:04:17.9317752",
+        "replies": [
+            {
+                "replyID": 1,
+                "replyText": "I hope so",
+                "replyDate": "2021-03-05T18:10:34.4225083",
+                "replier": {
+                    "name": null,
+                    "roleNames": null,
+                    "id": "e68813c7-e17e-4d29-b1e6-162318488aea",
+                    "userName": "lastone",
+                    "normalizedUserName": "LASTONE",
+                    "email": null,
+                    "normalizedEmail": null,
+                    "emailConfirmed": false,
+                    "passwordHash": "AQAAAAEAACcQAAAAEAaHgr7RgIExH6xc+3vxCOJ89c6RP7vzrEU+ThF/H6sDuLCrWOoGkXT3WJCJoJzJKg==",
+                    "securityStamp": "LK4C77GPR5KXVMMGYFDTDKAVFE6JYFGF",
+                    "concurrencyStamp": "75190f1f-4ae2-49b9-aa36-240756c1dda9",
+                    "phoneNumber": null,
+                    "phoneNumberConfirmed": false,
+                    "twoFactorEnabled": false,
+                    "lockoutEnd": null,
+                    "lockoutEnabled": true,
+                    "accessFailedCount": 0
+                }
+            }
+        ]
+    }
+]
+
+Get: 
+	https://localhost:44372/api/PostApi/3
+	
+	Results:
+	
+	{
+    "forumID": 3,
+    "pageName": "NOS4A2",
+    "pageRating": "5",
+    "postText": "Joe Hill is a great writer on his own merit",
+    "postCreator": {
+        "name": "Sarah Crew",
+        "roleNames": null,
+        "id": "826d17f6-0f7e-419e-8021-2f7f9db0e699",
+        "userName": "LittlePrincess",
+        "normalizedUserName": null,
+        "email": null,
+        "normalizedEmail": null,
+        "emailConfirmed": false,
+        "passwordHash": null,
+        "securityStamp": "b5b811de-20d4-4126-a4b1-5ade4d6e0c2d",
+        "concurrencyStamp": "018a05ca-a13c-4e3b-9841-caf6738658fb",
+        "phoneNumber": null,
+        "phoneNumberConfirmed": false,
+        "twoFactorEnabled": false,
+        "lockoutEnd": null,
+        "lockoutEnabled": false,
+        "accessFailedCount": 0
+    },
+    "postDate": "2020-11-15T00:00:00",
+    "replies": []
+}
+
+
+
+
+
+Post:
+	https://localhost:44372/api/PostApi
+	
+	{
+    "forumID": 7,
+    "pageName": "PostTest",
+    "pageRating": "5",
+    "postText": "Testing for Postman Posting",
+    "postCreator": {
+        "name": "Im new",
+        "roleNames": null,
+        "id": "936d17f6-0f7e-419e-8021-2f7f9db0e699",
+        "userName": "LittlePrince",
+        "normalizedUserName": null,
+        "email": null,
+        "normalizedEmail": null,
+        "emailConfirmed": false,
+        "passwordHash": null,
+        "securityStamp": "b5b811de-20d4-4126-a4b1-5ade4d6e0c3d",
+        "concurrencyStamp": "018a05ca-a13c-4e3b-9841-caf6738659fb",
+        "phoneNumber": null,
+        "phoneNumberConfirmed": false,
+        "twoFactorEnabled": false,
+        "lockoutEnd": null,
+        "lockoutEnabled": false,
+        "accessFailedCount": 0
+    },
+    "postDate": "2020-03-11T00:00:00",
+    "replies": []
+}
+
+
+Result:
+	Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'Posts' when IDENTITY_INSERT is set to OFF.
+
+	
