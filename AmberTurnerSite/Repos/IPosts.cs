@@ -14,6 +14,11 @@ namespace AmberTurnerSite.Repos
         Forum GetPost(int id);   //(string postCreator); 
 
         void UpdatePost(Forum posts);
+
+
+        IQueryable<Reply> Replies { get; }
+        Reply GetReply(int id);
+        void AddReply(Reply replies);
     }
 
 }

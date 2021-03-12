@@ -9,7 +9,7 @@ namespace AmberTurnerSite.Repos
     public class FakeForumRepository : IPosts
     {        
         List<Forum> posts = new List<Forum>();
-        //List<Reply> replies = new List<Reply>();
+        List<Reply> replies = new List<Reply>();
 
         public IQueryable<Forum> Posts
         { 
@@ -34,6 +34,25 @@ namespace AmberTurnerSite.Repos
             //context.Posts.Update(post);
             //context.SaveChanges();
             throw new NotImplementedException();
+        }
+
+
+
+
+        public IQueryable<Reply> Replies
+        {
+            get { return replies.AsQueryable<Reply>(); }
+        }
+
+        public Reply GetReply(int id)  //(string postCreator)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddReply(Reply reply)
+        {
+            reply.ReplyID = replies.Count;
+            replies.Add(reply);
         }
     }
 }

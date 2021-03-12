@@ -22,11 +22,29 @@ namespace AmberTurnerSite.Controllers
             repo = r;
         }
 
-        /*public IActionResult Get()
+        public IActionResult Get()
         {
-            var posts = repo.Posts.ToList<Forum>();
-            return Ok(posts);
+            var replies = repo.Replies.ToList<Reply>();
+            if (replies.Count == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(replies);
+            }
+        }
+
+        /*[HttpPost]
+        public async Task<ActionResult<Reply>> PostReply(Reply reply)
+        {
+            await Task.Run(() => repo.AddReply(reply));
+            //await repo.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetPost), new { id = reply.ReplyID }, reply);
         }*/
+
+
         //
 
 
@@ -57,5 +75,12 @@ namespace AmberTurnerSite.Controllers
 
             return CreatedAtAction(nameof(GetPost), new { id = post.ForumID }, post);
         }
+
+
+
+
+
+
+
     }
 }

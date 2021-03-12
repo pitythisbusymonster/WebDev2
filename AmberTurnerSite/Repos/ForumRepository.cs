@@ -46,5 +46,33 @@ namespace AmberTurnerSite.Repos
             context.Posts.Update(post);
             context.SaveChanges();
         }
+
+
+
+
+
+
+
+        public IQueryable<Reply> Replies
+        {
+            get
+            {
+                return context.Replies;//.Include(reply => reply.Replier)
+                                    //.Include(reply => reply.Replies)
+                                    //.ThenInclude(reply => reply.Replier);
+            }
+        }
+
+        public Reply GetReply(int id)
+        {
+            return context.Replies.Include("id").First(b => b.ReplyID == id);
+            //throw new NotImplementedException();
+        }
+
+        public void AddReply(Reply reply)
+        {
+            context.Replies.Add(reply);
+            context.SaveChanges();
+        }
     }
 }
