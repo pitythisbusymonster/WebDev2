@@ -8,18 +8,27 @@ using System.Threading.Tasks;
 
 namespace AmberTurnerSite.Controllers
 {
-   
+
     [Route("api/[controller]")]
     [ApiController]
     public class PostApiController : ControllerBase
     {
-        private readonly ForumRepository repo;
-        //private readonly IPosts repo;
 
-        public PostApiController(ForumRepository repo)//IPosts repo
+        private readonly IPosts repo;
+
+
+        public PostApiController(IPosts r)
         {
-            this.repo = repo;
+            repo = r;
         }
+
+        /*public IActionResult Get()
+        {
+            var posts = repo.Posts.ToList<Forum>();
+            return Ok(posts);
+        }*/
+        //
+
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Forum>>> GetPosts()
@@ -30,7 +39,7 @@ namespace AmberTurnerSite.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Forum>> GetPost(int id)
         {
-            var post = await repo.Posts.Where(u => u.ForumID == id).FirstOrDefaultAsync();  
+            var post = await repo.Posts.Where(u => u.ForumID == id).FirstOrDefaultAsync();
 
             if (post == null)
             {
